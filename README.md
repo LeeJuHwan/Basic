@@ -15,4 +15,4 @@
 > 컴퓨터구조 + 운영체제
 - [참고 영상](https://www.youtube.com/watch?v=kFWP6sFKyp0&list=PLYH7OjNUOWLUz15j4Q9M6INxK5J3-59GC)
 - [참고 교재](https://product.kyobobook.co.kr/detail/S000061584886)
-- [노션 정리]([https://faithful-blarney-6d1.notion.site/CS-Basic-8e330cecc75c4e0c87aa3f7fb8bbb678?pvs=4](https://faithful-blarney-6d1.notion.site/detail-c3856215cfdd4d0793cbd3de59a41f97?pvs=4)https://faithful-blarney-6d1.notion.site/detail-c3856215cfdd4d0793cbd3de59a41f97?pvs=4)
+- [노션 정리](https://faithful-blarney-6d1.notion.site/detail-c3856215cfdd4d0793cbd3de59a41f97?pvs=4)
