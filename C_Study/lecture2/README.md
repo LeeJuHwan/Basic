@@ -151,3 +151,85 @@ $ clang -o hello hello.c -lcs50
 3. 러버덕 에게 문제를 설명하기
     - 영상에서는 고무 오리 인형에게 내 문제를 얘기하면 어느 순간 문제가 잘못 되었다는 것을 느낄 수 있다고 설명한다.
     - 위 말을 뒷받침 하는 내용은 사실, 문제를 해결 할 때 화면만 응시하지 말고 누군가에게 조언을 얻거나 누군가에게 문제를 설명 하며, 머리를 식히는 시간도 필요하다는 얘기였다.
+
+### 데이터 타입
+
+---
+
+- bool - 1 byte
+- int - 4 bytes
+- long - 8 bytes
+- float - 4 bytes
+- double - 8 bytes
+- char - 1 byte
+- string ? bytes
+
+…
+
+### 배열
+
+---
+
+```c
+int scores[3];
+
+scores[0] = 72;
+scores[1] = 73;
+scores[2] = 33;
+```
+
+3개의 정수를 저장할 공간을 정적으로 선언하면, 12 bytes 크기의 array를 메모리에 할당 할 수 있다.
+
+위와 같이 값을 할당 하게 되면 변수를 3가지 만드는 것과 다를 바 없는 비효율적인 패턴이 된다.
+
+프로그래머는 반복되는 작업을 컴퓨터에게 명령 할 줄 알아야하며, 그 방법을 찾아야한다. 프로그래머가 반복되는 작업을 하고 있으면 코드에 냄새가 나기 때문이다. 
+
+그렇다면, 이렇게 바꿔 볼 수 있겠다.
+
+```c
+for (int i = 0; i < 3; i ++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+    printf("평균: %f\n", (scores[0] + scores[1] + scores[2]) / (float) 3);
+```
+
+바꾼 코드에서 아직 더 수정 할 수 있는 부분이 남아있다. 이렇게 코드에서 수정이 가능 하다는 것은 매우 흥미로운 일 중 하나이다. 
+
+하드코딩으로 배열에 접근 하지 않고, 함수를 만들어 호출 하도록 코드를 수정했다.
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+
+const int N = 3;
+
+float average(int length, int array[]);
+
+int main(void)
+{
+    int scores[N];
+    // scores[0] = get_int("Score: ");
+    // scores[1] = get_int("Score: ");
+    // scores[2] = get_int("Score: ");
+
+    for (int i = 0; i < 3; i ++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+    // printf("평균: %f\n", (scores[0] + scores[1] + scores[2]) / (float) 3);
+    printf("평균: %f\n", average(N, scores));
+}
+
+float average(int length, int array[])
+{
+    int sum = 0;
+    for (int i = 0; i < length; i ++)
+    {
+        sum += array[i];
+    }
+    return sum / (float) length;
+}
+```
+
+- 배열의 크기를 지원 할 수 있는 라이브러리나 해당 기능은 C에서 찾아 볼 수 없다. 또한, 함수를 만드는 것도 힘들 것이다. 그 이유는 배열을 선언 하자마자 C의 함수에 넣으면 일반 배열인 경우 크기를 알 수 없기 때문이다.
