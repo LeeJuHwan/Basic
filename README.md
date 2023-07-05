@@ -17,6 +17,6 @@
 - [참고 교재](https://product.kyobobook.co.kr/detail/S000061584886)
 - [노션 정리](https://faithful-blarney-6d1.notion.site/detail-c3856215cfdd4d0793cbd3de59a41f97?pvs=4)
 
-> 코세라 헤브루 대학교 컴퓨터구조
-- [코세라 헤브루 대학교 강의](https://www.coursera.org/learn/build-a-computer/lecture/gd00Q/unit-0-1-the-road-ahead)
+> 코세라 히브리 대학교 컴퓨터구조
+- [코세라 히브리 대학교 강의](https://www.coursera.org/learn/build-a-computer/lecture/gd00Q/unit-0-1-the-road-ahead)
 - [노션 정리](https://www.notion.so/Build-a-Modern-Computer-from-First-Principles-From-Nand-to-Tetris-391321d52fc04ffca0f6b6d5f2de43a5)
