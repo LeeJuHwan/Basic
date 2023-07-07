@@ -233,3 +233,193 @@ float average(int length, int array[])
 ```
 
 - 배열의 크기를 지원 할 수 있는 라이브러리나 해당 기능은 C에서 찾아 볼 수 없다. 또한, 함수를 만드는 것도 힘들 것이다. 그 이유는 배열을 선언 하자마자 C의 함수에 넣으면 일반 배열인 경우 크기를 알 수 없기 때문이다.
+
+### 문자열의 구성
+
+---
+
+우리는 문자열을 사용 하기 위해 단순히 string형의 변수를 선언하고, 그 안에 큰 따옴표로 감싸진 값을 할당했다. 그렇게 사용되는 문자열은 사실, 문자의 배열이 이루어진 것이다. 즉, 캐릭터 타입이 모이고 모여 스트링이 되는 것이며, 이 것이 문자열로 느껴지는 것은 캐릭터는 1바이트로 이루어져 있기 때문이었다. 
+
+그럼 어떻게 문자열의 끝을 구분 할 수 있을까?
+
+→ 문자열의 끝에는 일종의 구분 기호가 존재한다 마치 이렇게, 그럼 3바이트의 문자가 아닌 4바이트가 된다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f754e667-9e21-4a70-9441-5ef4e245c598/Untitled.png)
+
+그렇기 때문에 0이 나오기 전 까지 모든 문자를 출력 하는게 C의 printf 출력 방식이다.
+
+→ 0 = NUL과 같다.
+
+그래서 위와 같은 규칙에 따라 문자열의 길이를 구할 수 있다.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string name = get_string("What's your name? ");
+
+    int n = 0;
+
+    while (name[n] != '\0')
+    {
+         n++;
+    }
+    printf("%i\n", n);
+
+}
+```
+
+이렇게 배열을 순회 하면서 값을 가져오는 방법도 있지만, C언어의 문자열을 다룰 수 있는 라이브러리가 존재한다.
+
+그 외에도 많은 라이브러리가 있고 그 중 일부를 소개 하자면 이렇다.
+
+- string.h → 문자열 관련 라이브러리
+    - 위의 반복문을 제거하고 라이브러리를 이용하면 이렇게 코드를 간결하게 유지 할 수 있다.
+        
+        ```c
+        #include <cs50.h>
+        #include <stdio.h>
+        #include <string.h>
+        
+        int main(void)
+        {
+            string name = get_string("What's your name? ");
+        
+            int n = strlen(name);
+            printf("%i\n", n);
+        }
+        ```
+        
+- ctype.h → 데이터 관련 라이브러리
+
+### 대문자와 소문자를 캐릭터 타입에서 처리하기
+---
+
+아스키코드 표를 보면 영문 알파벳의 대문자와 소문자는 32의 차이가 존재한다. 그렇기 때문에 아스키코드에 해당하는 값을 구하고 32를 빼면 대문자, 반대로 더하면 소문자가 되는 형태이다. 이렇게 해서 간단하게 lowercase, uppercase를 구사 할 수 있다.
+
+uppercase & lowercase
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i =0; i < strlen(s); i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            printf("%c", s[i]-32);
+        }
+        else if (s[i] >= 'A' && s[i] <= 'Z')
+        {
+            printf("%c", s[i]+32);
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+ctype.h의 라이브러리를 사용 하여 하드코딩을 변경하기
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        // if (s[i] >= 'a' && s[i] <= 'z')
+        if (islower(s[i]))
+        {
+            // printf("%c", s[i]-32);
+            printf("%c", toupper(s[i]));
+        }
+        // else if (s[i] >= 'A' && s[i] <= 'Z')
+        else if (isupper(s[i]))
+        {
+            // printf("%c", s[i]+32);
+            printf("%c", tolower(s[i]));
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+### CLI args
+---
+
+프로그램은 언제나 대화형 커널이 옳은 것은 아니다. 어쩌면 커맨드 라인에서 대화형 커널을 유지 한다는 것은 속도를 늦출 수 있기 때문에 커맨드 라인에서 바로 인자를 받을 수 있는 방법을 적용 하여 다른 방법의 프로그램을 만들어본다.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world!\n");
+    }
+
+}
+```
+
+→ make greet
+
+→ ./greet {arguments}
+
+- argc = argument count: 몇 개의 인자 값을 전달 했는지
+- argv = argument vector: 커맨드 라인에 입력 한 인자 값을 전달한다
+
+
+### 왜 int가 main에 있는가?
+---
+
+우리의 main 함수는 항상 int 자료형을 선언했다. main은 가장 기본적으로 0을 반환 하며, 0을 기본적으로 반환 한다. 이 것을 커스텀 하여 에러가 날 때는 1로 나타낸다든지 등 변경 할 수 있다.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf("Missing command-line argument\n");
+        return 1;
+    }
+    else
+    {
+        printf("hello, %s\n", argv[1]);
+        return 0;
+    }
+}
+```
+
+Echo $?
+
+echo$를 이용하여 성공 했을 때 반환 값을 확인 할 수 있었다. 이렇게 프로그램의 종료 코드를 확인 하고 실행 되는 구문을 변경 시키는 등 다양하게 적용 할 수 있는 방법 중 하나이다.
