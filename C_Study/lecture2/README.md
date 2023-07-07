@@ -244,7 +244,6 @@ float average(int length, int array[])
 
 → 문자열의 끝에는 일종의 구분 기호가 존재한다 마치 이렇게, 그럼 3바이트의 문자가 아닌 4바이트가 된다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f754e667-9e21-4a70-9441-5ef4e245c598/Untitled.png)
 
 그렇기 때문에 0이 나오기 전 까지 모든 문자를 출력 하는게 C의 printf 출력 방식이다.
 
