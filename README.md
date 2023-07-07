@@ -6,6 +6,7 @@
 > C
 - [detail](./C_Study/README.md)
 - [참고 영상: Havard cs50 - 2023](https://www.youtube.com/watch?v=cY0FtXE-JzM&list=PL7cmIFofq7xHOKUpuU66uYiXanbD9Mp-O)
+- [노션 정리](https://www.notion.so/CS50-4db3525c84894b0c8a5ef25b18085416)
 
 > Java
 - [detail](./Java_Study/README.md)
