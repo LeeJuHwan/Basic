@@ -1,7 +1,10 @@
 ### CS50 - Lecture C
 
-| lecture 1
+> lecture 1
 - [detail](./lecture1/README.md)
 
-| lecture 2
+> lecture 2
 - [detail](./lecture2/README.md)
+
+> lecture 3
+- [detail](./lecture3/README.md)
