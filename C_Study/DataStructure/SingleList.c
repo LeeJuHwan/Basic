@@ -13,24 +13,18 @@ NODE *g_pHead = NULL;
 void PrintList()
 /*연결 리스트 전체 데이터 출력*/
 {
-    // NODE *pHead = g_pHead;
-    while (g_pHead != NULL)
+    NODE *pHead = g_pHead;
+    while (pHead != NULL)
     {
+        printf("g_Phead: %p >> Next: %p\n", g_pHead, g_pHead->next);
         printf("[%p]: %s, next[%p]\n",
-               g_pHead, g_pHead->szData, g_pHead->next);
-        g_pHead = g_pHead->next;
+               pHead, pHead->szData, pHead->next);
+        pHead = pHead->next;
     }
-    // while (pHead != NULL)
-    // {
-    //     printf("g_Phead: %p >> Next: %p\n", g_pHead, g_pHead->next);
-    //     printf("[%p]: %s, next[%p]\n",
-    //            pHead, pHead->szData, pHead->next);
-    //     pHead = pHead->next;
-    // }
-
     putchar('\n');
 }
 
+// 노드 추가
 int InsertNewNode(char *pszData)
 {
     NODE *pNode = (NODE *)malloc(sizeof(NODE));
@@ -49,6 +43,63 @@ int InsertNewNode(char *pszData)
     }
     return 1;
 }
+
+// 노드 삭제
+void ReleaseList(void)
+{
+    NODE *pTmp = g_pHead;
+    while (pTmp != NULL)
+    {
+        NODE *pDelete = pTmp;
+        pTmp = pTmp->next;
+
+        printf("Delete : [%p] %s\n", pDelete, pDelete->szData);
+        free(pDelete);
+    }
+}
+
+int FindData(char *pszData)
+{
+    NODE *pTmp = g_pHead;
+    while (pTmp != NULL)
+    {
+        if (strcmp(pTmp->szData, pszData) == 0)
+        {
+            return 1;
+        }
+        pTmp = pTmp->next;
+    }
+    return 0;
+}
+
+int DeleteData(char *pszData)
+{
+    NODE *pTmp = g_pHead;
+    NODE *pPrev = NULL;
+
+    while (pTmp != NULL)
+    {
+        if (strcmp(pTmp->szData, pszData) == 0)
+        {
+            printf("DeleteData(): %s\n", pTmp->szData);
+            if (pPrev != NULL)
+            {
+                pPrev->next = pTmp->next;
+            }
+            else
+            {
+                // 삭제 할 데이터가 첫 번째 인 경우
+                g_pHead = pTmp->next;
+            }
+            free(pTmp);
+            return 1;
+        }
+        pPrev = pTmp;
+        pTmp = pTmp->next;
+    }
+    return 0;
+}
+
 int main()
 {
     // List test case
@@ -59,5 +110,25 @@ int main()
     InsertNewNode("TEST03");
     PrintList();
 
+    if (FindData("TEST01") == 1)
+    {
+        printf("FindDat(): TEST01 found\n");
+    }
+
+    if (FindData("TEST02") == 1)
+    {
+        printf("FindDat(): TEST02 found\n");
+    }
+
+    if (FindData("TEST03") == 1)
+    {
+        printf("FindDat(): TEST03 found\n");
+    }
+
+    DeleteData("TEST01");
+    DeleteData("TEST02");
+    DeleteData("TEST03");
+
+    ReleaseList();
     return 0;
 }
