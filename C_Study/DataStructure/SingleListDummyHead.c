@@ -115,28 +115,78 @@ int DeleteData(char *pszData)
     return 0;
 }
 
+// stack push
+void PushData(char *inputData)
+{
+    InsertAtHead(inputData);
+}
+
+// stack pop
+int PopData(NODE *pPopNode)
+{
+    NODE *sp = g_head.next;
+
+    if (isEmpty())
+    {
+        return 0;
+    }
+
+    memcpy(pPopNode, sp, sizeof(NODE));
+
+    g_head.next = sp->next;
+    free(sp);
+    return 1;
+}
+
+// Queue put
+void enqueue(char *inputData)
+{
+    insertAtTail(inputData);
+}
+
+// Queue get
+int dequeue(NODE *getDataInNode)
+{
+}
+
 int main()
 {
-    puts("--- INSERT AT HEAD ---");
-    InsertAtHead("TEST01");
-    InsertAtHead("TEST02");
-    InsertAtHead("TEST03");
-    PrintList();
-    ReleaseList();
-
-    puts("--- INSERT AT TAIL ---");
-    insertAtTail("TEST01");
-    insertAtTail("TEST02");
-    insertAtTail("TEST03");
-    PrintList();
-    ReleaseList();
-
-    insertAtTail("TEST01");
-    insertAtTail("TEST02");
+    // Linked list test case
+    // puts("--- INSERT AT HEAD ---");
+    // InsertAtHead("TEST01");
+    // InsertAtHead("TEST02");
+    // InsertAtHead("TEST03");
+    // PrintList();
     // ReleaseList();
 
-    puts("--- FIND DATA ---");
-    printf("%p: [data] %s\n", FindData("TEST01"), FindData("TEST01")->nodeData);
+    // puts("--- INSERT AT TAIL ---");
+    // insertAtTail("TEST01");
+    // insertAtTail("TEST02");
+    // insertAtTail("TEST03");
+    // PrintList();
+    // ReleaseList();
 
+    // insertAtTail("TEST01");
+    // insertAtTail("TEST02");
+    // // ReleaseList();
+
+    // puts("--- FIND DATA ---");
+    // printf("%p: [data] %s\n", FindData("TEST01"), FindData("TEST01")->nodeData);
+
+    // Stack Test Case
+    PushData("TEST01");
+    PushData("TEST02");
+    PushData("TEST03");
+
+    NODE node = {0};
+
+    PopData(&node);
+    printf("POP: %s\n", node.nodeData);
+    PopData(&node);
+    printf("POP: %s\n", node.nodeData);
+    PopData(&node);
+    printf("POP: %s\n", node.nodeData);
+
+    ReleaseList();
     return 0;
 }
