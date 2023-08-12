@@ -9,6 +9,9 @@
 > Java
 - [detail](./Java_Study/README.md)
 
+> Python
+  - CPython
+    - [블로그 정리](https://velog.io/@1eejuhwany/series/%EC%95%88%EB%85%95-%EC%94%A8%ED%8C%8C%EC%9D%B4%EC%8D%AC)
 
 ### CS
 > 컴퓨터구조 + 운영체제
