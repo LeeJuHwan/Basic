@@ -152,3 +152,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# crawling virtual environment
+**/**/**/crawling
+
+# CPython folder
+**/**/cpython
