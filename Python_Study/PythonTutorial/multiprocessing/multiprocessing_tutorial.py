@@ -1,20 +1,21 @@
+from typing import Final
 from multiprocessing import Process
 import time
 import logging
 
 
-FORMAT = "%(asctime)s: %(message)s"
+FORMAT: Final[str] = "%(asctime)s: %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO, datefmt="%H:%M:%S")
 
 
-def proc(name):
+def proc(name: str):
     print(f"Sub Process start >> {name}")
     time.sleep(3)
     print(f"Sub Process finish >> {name}")
 
 
 def main():
-    p = Process(target=proc, args=("First", ))
+    p: Process = Process(target=proc, args=("First",))
     logging.info("Main Process: before create process")
 
     p.start()
