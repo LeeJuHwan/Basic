@@ -24,9 +24,9 @@
 
 ### Table of Contents
 
-- [NOT](#.-NOT)
-- [AND](#.-AND)
-- [OR](#.-OR)
+- [NOT](#not)
+- [AND](#and)
+- [OR](#or)
 
 ### NOT
 
