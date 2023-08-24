@@ -27,6 +27,7 @@
 - [NOT](#not)
 - [AND](#and)
 - [OR](#or)
+- [XOR](#xor)
 
 ### NOT
 
