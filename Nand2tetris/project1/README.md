@@ -93,3 +93,26 @@
         Nand(a=aNot, b=bNot, out=out);
     }
   ```
+
+### XOR
+
+- chip: Xor
+- input: a, b
+- output: out
+- `Not(a == b)`
+
+- implement
+
+  ```
+    CHIP Xor {
+        IN a, b;
+        OUT out;
+
+        PARTS:
+        Not(in=a, out=notA);
+        Not(in=b, out=notB);
+        Nand(a=a, b=notB, out=temp1);
+        Nand(a=b, b=notA, out=temp2);
+        Nand(a=temp1, b=temp2, out=out);
+    }
+  ```
