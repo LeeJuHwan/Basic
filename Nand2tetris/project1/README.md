@@ -28,6 +28,7 @@
 - [AND](#and)
 - [OR](#or)
 - [XOR](#xor)
+- [MUX](#mux)
 
 ### NOT
 
@@ -115,5 +116,27 @@
         Nand(a=a, b=notB, out=temp1);
         Nand(a=b, b=notA, out=temp2);
         Nand(a=temp1, b=temp2, out=out);
+    }
+  ```
+
+### MUX
+
+- chip: Mux
+- input: a, b, sel
+- output: out
+- `If sel == 0: a, else: b`
+  - sel은 맨 처음 0으로 셋팅 되기 때문에, 0일 때는 a와 and조건으로 매칭 시키기 위해 1로 뒤집어서 a가 1일 때를 매칭하고, b는 반대로 1일 때 이기 때문에 서로 같은 1이면 1을 리턴 함
+- implement
+
+  ```
+    CHIP Mux {
+      IN a, b, sel;
+      OUT out;
+
+      PARTS:
+      Not(in=sel, out=notSel);
+      And(a=notSel, b=a, out=temp1);
+      And(a=sel, b=b, out=temp2);
+      Or(a=temp1, b=temp2, out=out2);
     }
   ```
