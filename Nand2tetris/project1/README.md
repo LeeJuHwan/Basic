@@ -281,3 +281,7 @@ Multi-bit logic gates: `Not`/`And`/`Or` 기본 버전에서 n개의 비트 수 �
         DMux(in=gH, sel=sel[0], a=g, b=h);
     }
   ```
+
+### Submit
+---
+<img width="1021" alt="image" src="https://github.com/LeeJuHwan/Basic/assets/118493627/e861c438-64ae-49ac-a5c5-c516dec82a22">
