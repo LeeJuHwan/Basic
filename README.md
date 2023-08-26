@@ -26,3 +26,4 @@
 ### 밑바닥 부터 구성하는 컴퓨팅 시스템
 - [노션 정리](https://faithful-blarney-6d1.notion.site/Build-a-Modern-Computer-from-First-Principles-From-Nand-to-Tetris-391321d52fc04ffca0f6b6d5f2de43a5?pvs=4)
 - [참고 교재](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000005212746)
+- [프로젝트 정리](./Nand2tetris/project1/README.md)
