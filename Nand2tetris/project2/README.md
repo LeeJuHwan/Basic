@@ -22,8 +22,8 @@
 
 ### Table of Contents
 - [Adders](#adders)
-- [Incrementer](#Incrementer)
-- [Arithmetic Logic Unit](#multi-way-variants)
+- [Incrementer](#incrementer)
+- [Arithmetic Logic Unit](#arithmetic-logic-unit)
 
 ### Adders
 > Half Adder
